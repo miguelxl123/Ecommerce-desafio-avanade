@@ -1,0 +1,49 @@
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Docker
+.docker
+docker-compose.yml
+docker-compose.*.yml
+Dockerfile*
+
+# IDE
+.vs
+.vscode
+**/.vs
+**/.vscode
+
+# Build artifacts
+**/bin
+**/obj
+**/out
+
+# Package directories
+**/node_modules
+
+# Documentation
+*.md
+!README.md
+
+# Environment files
+.env
+.env.*
+
+# Logs
+*.log
+
+# Test results
+TestResults/
+**/*.trx
+**/*.coverage
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db

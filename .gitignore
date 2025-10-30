@@ -1,0 +1,40 @@
+# .NET Core
+bin/
+obj/
+*.user
+*.suo
+*.cache
+*.log
+
+# Visual Studio
+.vs/
+.vscode/
+
+# Rider
+.idea/
+
+# Docker
+docker-compose.override.yml
+.env
+
+# Logs
+logs/
+*.log
+
+# Database
+*.db
+*.sqlite
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+
+# RabbitMQ data
+rabbitmq-data/
+
+# PostgreSQL data
+postgres-data/

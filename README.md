@@ -16,6 +16,8 @@ O sistema é composto por microserviços que se comunicam via um API Gateway e u
 - **RabbitMQ** - Mensageria assíncrona
 - **Docker** - Orquestração dos serviços
 
+![Arquitetura](./ecommerce-microservices/docs/arquitetura.png)
+
 ##  Tecnologias
 
 - .NET Core 9.0

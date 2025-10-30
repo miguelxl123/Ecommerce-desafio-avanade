@@ -18,7 +18,9 @@ O sistema é composto por microserviços que se comunicam via um API Gateway e u
 
 ## 🏗️ Arquitetura do Sistema
 
-![Arquitetura](docs/arquitetura.png)
+![Arquitetura](arquitetura.png)
+
+*Diagrama da arquitetura de microserviços do sistema de ecommerce*
 
 ##  Tecnologias
 

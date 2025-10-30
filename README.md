@@ -52,7 +52,7 @@ docker-compose up -d
 
 ##  Documentação
 
-- **Testes:** [![Tests](https://img.shields.io/badge/tests-integration-blue)](./ecommerce-desafio-avanade/MANUAL-TESTES.md)
+- **Testes:** '[![Tests](https://img.shields.io/badge/tests-integration-blue)](./ecommerce-desafio-avanade/MANUAL-TESTES.md)'
 - **Setup:** `SETUP.md`
 - **Postman:** `postman-collection.json`
 

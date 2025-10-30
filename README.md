@@ -1,6 +1,11 @@
 # Ecommerce Microservices - Desafio Avanade
 
-Sistema de ecommerce com arquitetura de microserviços usando .NET Core, Entity Framework, RabbitMQ e Docker.
+Projeto para desenvolver uma aplicação com arquitetura de microserviços para gerenciamento de estoque de produtos e vendas em uma plataforma de e-commerce.
+
+O sistema é composto por microserviços que se comunicam via um API Gateway e um broker de mensagens (RabbitMQ). A autenticação é baseada em JWT.
+
+[![Build Status](https://img.shields.io/badge/build-passing-brightgreen)](https://github.com/miguelxl123/ecommerce-desafio-avanade)
+
 
 # Arquitetura
 
@@ -10,6 +15,22 @@ Sistema de ecommerce com arquitetura de microserviços usando .NET Core, Entity 
 - **PostgreSQL** - Banco de dados com schemas separados
 - **RabbitMQ** - Mensageria assíncrona
 - **Docker** - Orquestração dos serviços
+
+##  Tecnologias
+
+- .NET Core 9.0
+- Entity Framework Core
+- PostgreSQL
+- RabbitMQ
+- JWT Authentication
+- YARP (API Gateway)
+- Docker & Docker Compose
+- Swagger/OpenAPI
+
+## Badges
+
+![JWT](https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens)
+![C#](https://img.shields.io/badge/c%23-%23239120.svg?style=for-the-badge&logo=csharp&logoColor=white)	![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white) ![.Net](https://img.shields.io/badge/.NET-5C2D91?style=for-the-badge&logo=.net&logoColor=white)	![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
 
 ##  Execução
 
@@ -31,7 +52,7 @@ docker-compose up -d
 
 ##  Documentação
 
-- **Testes:** `MANUAL-TESTES.md`
+- **Testes:** [![Tests](https://img.shields.io/badge/tests-integration-blue)](./ecommerce-desafio-avanade/MANUAL-TESTES.md)
 - **Setup:** `SETUP.md`
 - **Postman:** `postman-collection.json`
 
@@ -47,13 +68,9 @@ docker-compose up -d
 - **Admin:** admin@ecommerce.com / admin123
 - **User:** user@ecommerce.com / user123
 
-##  Tecnologias
+## Sobre mim
 
-- .NET Core 9.0
-- Entity Framework Core
-- PostgreSQL
-- RabbitMQ
-- JWT Authentication
-- YARP (API Gateway)
-- Docker & Docker Compose
-- Swagger/OpenAPI
+- Nome: José Miguel
+- Perfil: ![C#](https://img.shields.io/badge/c%23-%23239120.svg?style=for-the-badge&logo=csharp&logoColor=white)	![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white) ![.Net](https://img.shields.io/badge/.NET-5C2D91?style=for-the-badge&logo=.net&logoColor=white)	![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
+- Contato: 	[![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/jos%C3%A9-miguel-059a19170/)
+- bootcamp: [<img src="https://assets.dio.me/fmurnmImYsLpbR26s6Rsrxi82t-6iYqTlwkJGBzm0mI/f:webp/h:120/q:80/L3RyYWNrcy8yMzk0ODU4NS1iZTdmLTRlZjctODQxNi1iOGUwYWFhYWYyZjcucG5n" height="50"></a>](https://web.dio.me/track/avanade-back-end-com-net-e-ia)

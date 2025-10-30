@@ -55,9 +55,9 @@ docker-compose up -d
 
 ##  Documentação
 
-- **Testes:** [![Tests](https://img.shields.io/badge/tests-integration-blue)](./MANUAL-TESTES.md)
-- **Setup:** *SETUP.md*
-- **Postman:** *postman-collection.json*
+- **Testes:** [![Tests](https://img.shields.io/badge/tests-integration-red)](./MANUAL-TESTES.md)
+- **Setup:** ./SETUP.md
+- **Postman:** ./postman-collection.json
 
 
 ##  Fluxo de Teste

@@ -1,6 +1,6 @@
-# 📖 Manual de Testes - Ecommerce Microservices
+#  Manual de Testes - Ecommerce Microservices
 
-## 🚀 Execução
+##  Execução
 
 ### **1. Iniciar Sistema:**
 ```bash
@@ -14,7 +14,7 @@ docker-compose up -d
 
 ---
 
-## 🌐 Testes Manuais via Swagger
+##  Testes Manuais via Swagger
 
 ### **Acesso:**
 - **API Gateway:** http://localhost:5000/swagger
@@ -65,7 +65,7 @@ docker-compose up -d
 
 ---
 
-## 👥 Usuários de Teste
+##  Usuários de Teste
 
 | Email | Senha | Role |
 |-------|-------|------|
@@ -74,7 +74,7 @@ docker-compose up -d
 
 ---
 
-## 📦 Produtos Disponíveis
+##  Produtos Disponíveis
 
 | Nome | ID | Estoque |
 |------|----| --------|
@@ -86,7 +86,7 @@ docker-compose up -d
 
 ---
 
-## 📊 Monitoramento
+##  Monitoramento
 
 - **RabbitMQ:** http://localhost:15672 (admin/admin123)
 - **Logs:** `docker-compose logs -f`
@@ -94,7 +94,7 @@ docker-compose up -d
 
 ---
 
-## 🔧 Solução de Problemas
+##  Solução de Problemas
 
 ### **Erro 401 (Unauthorized):**
 1. Verifique se fez login corretamente

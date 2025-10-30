@@ -6,6 +6,9 @@ using System.Security.Claims;
 
 namespace Ecommerce.Vendas.Controllers;
 
+/// <summary>
+/// Controller responsável por gerenciar pedidos de venda
+/// </summary>
 [ApiController]
 [Route("api/[controller]")]
 [Authorize]
@@ -20,10 +23,15 @@ public class OrdersController : ControllerBase
         _vendasService = vendasService;
         _logger = logger;
     }
-    /// Criar um novo pedido
-
-    /// <param name="request">Dados do pedido</param>
-    /// <returns>Pedido criado</returns>
+    
+    /// <summary>
+    /// Criar um novo pedido de venda
+    /// </summary>
+    /// <param name="request">Dados do pedido a ser criado</param>
+    /// <returns>Pedido criado com sucesso</returns>
+    /// <response code="200">Pedido criado com sucesso</response>
+    /// <response code="400">Dados inválidos ou estoque insuficiente</response>
+    /// <response code="401">Usuário não autenticado</response>
     [HttpPost]
     [ProducesResponseType(typeof(ApiResponse<Order>), 200)]
     [ProducesResponseType(typeof(ApiResponse<object>), 400)]

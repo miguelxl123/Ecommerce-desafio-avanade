@@ -5,6 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Ecommerce.Estoque.Controllers;
 
+/// <summary>
+/// Controller responsável por gerenciar produtos e estoque
+/// </summary>
 [ApiController]
 [Route("api/[controller]")]
 [Produces("application/json")]
@@ -20,11 +23,12 @@ public class ProductsController : ControllerBase
     }
 
     /// <summary>
-    /// Listar produtos
+    /// Listar produtos disponíveis no catálogo
     /// </summary>
-    /// <param name="categoria">Filtrar por categoria</param>
-    /// <param name="apenasAtivos">Mostrar apenas produtos ativos</param>
-    /// <returns>Lista de produtos</returns>
+    /// <param name="categoria">Filtrar produtos por categoria específica</param>
+    /// <param name="apenasAtivos">Mostrar apenas produtos ativos (true por padrão)</param>
+    /// <returns>Lista de produtos com informações de estoque</returns>
+    /// <response code="200">Lista de produtos retornada com sucesso</response>
     [HttpGet]
     [ProducesResponseType(typeof(ApiResponse<IEnumerable<Product>>), 200)]
     public async Task<IActionResult> ListarProdutos([FromQuery] string? categoria = null, [FromQuery] bool apenasAtivos = true)
@@ -42,10 +46,12 @@ public class ProductsController : ControllerBase
     }
 
     /// <summary>
-    /// Obter produto por ID
+    /// Obter produto específico por ID
     /// </summary>
-    /// <param name="id">ID do produto</param>
-    /// <returns>Detalhes do produto</returns>
+    /// <param name="id">Identificador único do produto</param>
+    /// <returns>Detalhes completos do produto incluindo estoque atual</returns>
+    /// <response code="200">Produto encontrado com sucesso</response>
+    /// <response code="404">Produto não encontrado</response>
     [HttpGet("{id:guid}")]
     [ProducesResponseType(typeof(ApiResponse<Product>), 200)]
     [ProducesResponseType(typeof(ApiResponse<object>), 404)]

@@ -6,18 +6,55 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Ecommerce.Estoque.Services;
 
+/// <summary>
+/// Interface para serviços de gerenciamento de estoque e produtos
+/// </summary>
 public interface IEstoqueService
 {
+    /// <summary>
+    /// Listar produtos do catálogo com filtros opcionais
+    /// </summary>
     Task<ApiResponse<IEnumerable<Product>>> ListarProdutosAsync(string? categoria = null, bool apenasAtivos = true);
+    
+    /// <summary>
+    /// Obter produto específico por ID
+    /// </summary>
     Task<ApiResponse<Product>> ObterProdutoPorIdAsync(Guid id);
+    
+    /// <summary>
+    /// Criar novo produto no catálogo
+    /// </summary>
     Task<ApiResponse<Product>> CriarProdutoAsync(CreateProductRequest request);
+    
+    /// <summary>
+    /// Atualizar informações de um produto existente
+    /// </summary>
     Task<ApiResponse<Product>> AtualizarProdutoAsync(Guid id, UpdateProductRequest request);
+    
+    /// <summary>
+    /// Remover produto do catálogo (soft delete)
+    /// </summary>
     Task<ApiResponse<bool>> DeletarProdutoAsync(Guid id);
+    
+    /// <summary>
+    /// Verificar disponibilidade de produto e quantidade em estoque
+    /// </summary>
     Task<ApiResponse<ProductAvailabilityResponse>> VerificarDisponibilidadeAsync(ProductAvailabilityRequest request);
+    
+    /// <summary>
+    /// Dar baixa no estoque de um produto (geralmente após venda)
+    /// </summary>
     Task<ApiResponse<Product>> DarBaixaEstoqueAsync(Guid productId, int quantity, string reason = "Venda realizada");
+    
+    /// <summary>
+    /// Adicionar produtos ao estoque (reposição)
+    /// </summary>
     Task<ApiResponse<Product>> AdicionarEstoqueAsync(Guid productId, int quantity, string reason = "Reposição");
 }
 
+/// <summary>
+/// Implementação dos serviços de gerenciamento de estoque e produtos
+/// </summary>
 public class EstoqueService : IEstoqueService
 {
     private readonly EstoqueDbContext _context;

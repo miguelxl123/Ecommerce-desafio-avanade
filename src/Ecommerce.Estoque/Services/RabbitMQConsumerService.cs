@@ -4,12 +4,19 @@ using Ecommerce.Estoque.Services;
 
 namespace Ecommerce.Estoque.Services;
 
+/// <summary>
+/// Interface para serviço consumidor de mensagens RabbitMQ
+/// </summary>
 public interface IRabbitMQConsumerService
 {
     Task StartAsync(CancellationToken cancellationToken);
     Task StopAsync(CancellationToken cancellationToken);
 }
 
+/// <summary>
+/// Serviço responsável por consumir mensagens RabbitMQ e processar eventos de venda
+/// Este serviço roda em background e escuta eventos de vendas para atualizar o estoque automaticamente
+/// </summary>
 public class RabbitMQConsumerService : BackgroundService, IRabbitMQConsumerService
 {
     private readonly IRabbitMQService _rabbitMQ;
@@ -26,14 +33,17 @@ public class RabbitMQConsumerService : BackgroundService, IRabbitMQConsumerServi
         _logger = logger;
     }
 
+    /// <summary>
+    /// Executa o serviço em background, configurando consumidores de mensagens
+    /// </summary>
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
         try
         {
-            // Configurar consumo de mensagens de venda criada
+            // Configurar consumo de mensagens de venda criada para baixa automática no estoque
             await _rabbitMQ.SubscribeAsync<VendaCriadaEvent>("venda.criada", ProcessarVendaCriada);
             
-            _logger.LogInformation("RabbitMQ Consumer Service started and listening for messages");
+            _logger.LogInformation("RabbitMQ Consumer Service iniciado e aguardando mensagens");
 
             // Manter o serviço rodando
             while (!stoppingToken.IsCancellationRequested)

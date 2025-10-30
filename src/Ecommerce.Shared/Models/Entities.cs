@@ -2,30 +2,63 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Ecommerce.Shared.Models;
 
+/// <summary>
+/// Classe base para todas as entidades do domínio
+/// Fornece propriedades comuns de auditoria
+/// </summary>
 public class BaseEntity
 {
+    /// <summary>
+    /// Identificador único da entidade
+    /// </summary>
     public Guid Id { get; set; } = Guid.NewGuid();
+    
+    /// <summary>
+    /// Data e hora de criação da entidade
+    /// </summary>
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    
+    /// <summary>
+    /// Data e hora da última atualização da entidade
+    /// </summary>
     public DateTime? UpdatedAt { get; set; }
 }
 
+/// <summary>
+/// Entidade que representa um produto no catálogo da loja
+/// </summary>
 public class Product : BaseEntity
 {
+    /// <summary>
+    /// Nome do produto (obrigatório, até 200 caracteres)
+    /// </summary>
     [Required]
     [StringLength(200)]
     public string Name { get; set; } = string.Empty;
     
+    /// <summary>
+    /// Descrição detalhada do produto (opcional, até 1000 caracteres)
+    /// </summary>
     [StringLength(1000)]
     public string? Description { get; set; }
     
+    /// <summary>
+    /// Preço unitário do produto (deve ser maior que zero)
+    /// </summary>
     [Required]
     [Range(0.01, double.MaxValue, ErrorMessage = "Price must be greater than 0")]
     public decimal Price { get; set; }
     
+    /// <summary>
+    /// Quantidade atual em estoque (não pode ser negativa)
+    /// </summary>
     [Required]
     [Range(0, int.MaxValue, ErrorMessage = "Stock quantity cannot be negative")]
     public int StockQuantity { get; set; }
     
+    /// <summary>
+    /// Categoria do produto para organização (opcional, até 50 caracteres)
+    /// </summary>
     [StringLength(50)]
     public string? Category { get; set; }
     

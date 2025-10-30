@@ -6,12 +6,12 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container
+// Adicionar serviços ao container de dependências
 builder.Services.AddControllers();
 
-// Configure JWT Authentication
+// Configurar autenticação JWT
 var jwtSettings = builder.Configuration.GetSection("Jwt");
-var secretKey = jwtSettings["Secret"] ?? throw new InvalidOperationException("JWT Secret not configured");
+var secretKey = jwtSettings["Secret"] ?? throw new InvalidOperationException("JWT Secret não configurado");
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
@@ -29,7 +29,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 
-// Configure Authorization Policies
+// Configurar políticas de autorização
 builder.Services.AddAuthorizationBuilder()
     .AddPolicy("JwtPolicy", policy =>
     {
@@ -37,14 +37,14 @@ builder.Services.AddAuthorizationBuilder()
         policy.AuthenticationSchemes.Add(JwtBearerDefaults.AuthenticationScheme);
     });
 
-// Add YARP Reverse Proxy
+// Adicionar YARP Reverse Proxy para roteamento
 builder.Services.AddReverseProxy()
     .LoadFromConfig(builder.Configuration.GetSection("ReverseProxy"));
 
-// Add custom services
+// Adicionar serviços customizados
 builder.Services.AddScoped<IAuthService, AuthService>();
 
-// Configure Swagger
+// Configurar Swagger para documentação da API
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
@@ -55,10 +55,10 @@ builder.Services.AddSwaggerGen(c =>
         Description = "Gateway de API para sistema de ecommerce com microserviços"
     });
     
-    // Configure JWT authentication in Swagger
+    // Configurar autenticação JWT no Swagger
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
-        Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
+        Description = "Cabeçalho de autorização JWT usando Bearer scheme. Exemplo: \"Authorization: Bearer {token}\"",
         Name = "Authorization",
         In = ParameterLocation.Header,
         Type = SecuritySchemeType.ApiKey,
@@ -81,7 +81,7 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-// Add CORS
+// Adicionar CORS para permitir requisições de diferentes origens
 builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(policy =>
@@ -94,7 +94,7 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline
+// Configurar o pipeline de requisições HTTP
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -114,10 +114,10 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-// Map reverse proxy routes
+// Mapear rotas do reverse proxy
 app.MapReverseProxy();
 
-// Health check endpoint
+// Endpoint de verificação de saúde da aplicação
 app.MapGet("/health", () => new
 {
     Status = "Healthy",

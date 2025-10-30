@@ -56,8 +56,8 @@ docker-compose up -d
 ##  Documentação
 
 - **Testes:** [![Tests](https://img.shields.io/badge/tests-integration-blue)](./MANUAL-TESTES.md)
-- **Setup:** [![logoColor violet](https://img.shields.io/bit/collection/total-components/:owner/:collection)](./SETUP.md)
-- **Postman:** [![logoColor violet](https://img.shields.io/badge/dynamic/json)](postman-collection.json)
+- **Setup:** (./SETUP.md)
+- **Postman:** (postman-collection.json)
 
 
 ##  Fluxo de Teste

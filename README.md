@@ -16,7 +16,7 @@ O sistema é composto por microserviços que se comunicam via um API Gateway e u
 - **RabbitMQ** - Mensageria assíncrona
 - **Docker** - Orquestração dos serviços
 
-## 🏗️ Arquitetura do Sistema
+##  Arquitetura do Sistema
 
 ![Arquitetura](https://hermes.dio.me/files/assets/45346875-7aad-45d4-8845-feadf18488e5.png)
 

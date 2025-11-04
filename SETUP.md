@@ -1,4 +1,4 @@
-# Configuração para execução local 
+# Configuração para execução local (appsettings.Development.json)
 
 ## API Gateway (porta 5000)
 - Endpoint: http://localhost:5000

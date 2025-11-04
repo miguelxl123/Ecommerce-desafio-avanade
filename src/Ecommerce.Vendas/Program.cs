@@ -59,10 +59,10 @@ builder.Services.AddSwaggerGen(c =>
         Description = "Microserviço de vendas para sistema de ecommerce"
     });
     
-    // Configure JWT authentication in Swagger
+    // Configurar autenticação JWT no Swagger
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
-        Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
+        Description = "Cabeçalho de autorização JWT usando Bearer scheme. Exemplo: \"Authorization: Bearer {token}\"",
         Name = "Authorization",
         In = ParameterLocation.Header,
         Type = SecuritySchemeType.ApiKey,
@@ -98,7 +98,7 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline
+// Configurar o pipeline de requisições HTTP
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -118,17 +118,17 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-// Health check endpoint
+// Endpoint de verificação de saúde
 app.MapGet("/health", () => new
 {
-    Status = "Healthy",
+    Status = "Saudável",
     Service = "Ecommerce.Vendas",
     Timestamp = DateTime.UtcNow,
     Version = "1.0.0",
     Environment = app.Environment.EnvironmentName
 }).WithName("HealthCheck");
 
-// Auto-migrate database in development
+// Migração automática do banco em desenvolvimento
 if (app.Environment.IsDevelopment())
 {
     using var scope = app.Services.CreateScope();
@@ -136,11 +136,11 @@ if (app.Environment.IsDevelopment())
     try
     {
         await context.Database.MigrateAsync();
-        app.Logger.LogInformation("Database migration completed successfully");
+        app.Logger.LogInformation("Migração do banco de dados concluída com sucesso");
     }
     catch (Exception ex)
     {
-        app.Logger.LogError(ex, "An error occurred while migrating the database");
+        app.Logger.LogError(ex, "Erro ao realizar migração do banco de dados");
     }
 }
 

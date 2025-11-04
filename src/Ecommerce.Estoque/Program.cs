@@ -59,10 +59,10 @@ builder.Services.AddSwaggerGen(c =>
         Description = "Microserviço de estoque para sistema de ecommerce"
     });
     
-    // Configure JWT authentication in Swagger
+    // Configurar autenticação JWT no Swagger
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
-        Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
+        Description = "Cabeçalho de autorização JWT usando Bearer scheme. Exemplo: \"Authorization: Bearer {token}\"",
         Name = "Authorization",
         In = ParameterLocation.Header,
         Type = SecuritySchemeType.ApiKey,

@@ -54,11 +54,11 @@ public class RabbitMQService : IRabbitMQService, IDisposable
             _connection = factory.CreateConnection();
             _channel = _connection.CreateModel();
             
-            _logger.LogInformation("Connected to RabbitMQ at {ConnectionString}", _connectionString);
+            _logger.LogInformation("Conectado ao RabbitMQ em {ConnectionString}", _connectionString);
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Failed to connect to RabbitMQ at {ConnectionString}", _connectionString);
+            _logger.LogError(ex, "Falha ao conectar ao RabbitMQ em {ConnectionString}", _connectionString);
             throw;
         }
     }
@@ -67,7 +67,7 @@ public class RabbitMQService : IRabbitMQService, IDisposable
     {
         try
         {
-            // Declare exchange if it doesn't exist
+            // Declarar exchange se não existir
             _channel.ExchangeDeclare(exchange, ExchangeType.Topic, durable: true);
 
             var json = JsonSerializer.Serialize(message);
@@ -80,14 +80,14 @@ public class RabbitMQService : IRabbitMQService, IDisposable
 
             _channel.BasicPublish(exchange, routingKey, properties, body);
             
-            _logger.LogInformation("Published message to exchange {Exchange} with routing key {RoutingKey}", 
+            _logger.LogInformation("Mensagem publicada na exchange {Exchange} com routing key {RoutingKey}", 
                 exchange, routingKey);
             
             await Task.CompletedTask;
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Failed to publish message to exchange {Exchange} with routing key {RoutingKey}", 
+            _logger.LogError(ex, "Falha ao publicar mensagem na exchange {Exchange} com routing key {RoutingKey}", 
                 exchange, routingKey);
             throw;
         }
@@ -97,7 +97,7 @@ public class RabbitMQService : IRabbitMQService, IDisposable
     {
         try
         {
-            // Declare queue if it doesn't exist
+            // Declarar fila se não existir
             _channel.QueueDeclare(queue, durable: true, exclusive: false, autoDelete: false);
 
             var consumer = new AsyncEventingBasicConsumer(_channel);
@@ -115,30 +115,30 @@ public class RabbitMQService : IRabbitMQService, IDisposable
                         await handler(message);
                         _channel.BasicAck(eventArgs.DeliveryTag, false);
                         
-                        _logger.LogInformation("Successfully processed message from queue {Queue}", queue);
+                        _logger.LogInformation("Mensagem processada com sucesso da fila {Queue}", queue);
                     }
                     else
                     {
-                        _logger.LogWarning("Received null message from queue {Queue}", queue);
+                        _logger.LogWarning("Mensagem nula recebida da fila {Queue}", queue);
                         _channel.BasicNack(eventArgs.DeliveryTag, false, false);
                     }
                 }
                 catch (Exception ex)
                 {
-                    _logger.LogError(ex, "Error processing message from queue {Queue}", queue);
+                    _logger.LogError(ex, "Erro ao processar mensagem da fila {Queue}", queue);
                     _channel.BasicNack(eventArgs.DeliveryTag, false, false);
                 }
             };
 
             _channel.BasicConsume(queue, false, consumer);
             
-            _logger.LogInformation("Started consuming messages from queue {Queue}", queue);
+            _logger.LogInformation("Iniciado consumo de mensagens da fila {Queue}", queue);
             
             await Task.CompletedTask;
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Failed to subscribe to queue {Queue}", queue);
+            _logger.LogError(ex, "Falha ao subscrever na fila {Queue}", queue);
             throw;
         }
     }
@@ -149,11 +149,11 @@ public class RabbitMQService : IRabbitMQService, IDisposable
         {
             _channel?.Dispose();
             _connection?.Dispose();
-            _logger.LogInformation("RabbitMQ connection disposed");
+            _logger.LogInformation("Conexão RabbitMQ liberada");
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Error disposing RabbitMQ connection");
+            _logger.LogError(ex, "Erro ao liberar conexão RabbitMQ");
         }
     }
 }

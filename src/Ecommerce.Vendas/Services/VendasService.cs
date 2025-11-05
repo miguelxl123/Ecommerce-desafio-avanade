@@ -7,40 +7,26 @@ using System.Text.Json;
 
 namespace Ecommerce.Vendas.Services;
 
-/// <summary>
-/// Interface para serviços de gerenciamento de vendas
-/// </summary>
+// Interface para serviços de gerenciamento de vendas
 public interface IVendasService
 {
-    /// <summary>
-    /// Criar um novo pedido após validar disponibilidade no estoque
-    /// </summary>
+    // Criar um novo pedido após validar disponibilidade no estoque
     Task<ApiResponse<Order>> CriarPedidoAsync(CreateOrderRequest request, Guid userId, string userEmail);
     
-    /// <summary>
-    /// Listar pedidos, opcionalmente filtrados por usuário
-    /// </summary>
+    // Listar pedidos, opcionalmente filtrados por usuário
     Task<ApiResponse<IEnumerable<Order>>> ListarPedidosAsync(Guid? userId = null);
     
-    /// <summary>
-    /// Obter detalhes de um pedido específico
-    /// </summary>
+    // Obter detalhes de um pedido específico
     Task<ApiResponse<Order>> ObterPedidoPorIdAsync(Guid id);
     
-    /// <summary>
-    /// Confirmar um pedido e publicar evento para redução de estoque
-    /// </summary>
+    // Confirmar um pedido e publicar evento para redução de estoque
     Task<ApiResponse<Order>> ConfirmarPedidoAsync(Guid id);
     
-    /// <summary>
-    /// Cancelar um pedido pendente
-    /// </summary>
+    // Cancelar um pedido pendente
     Task<ApiResponse<Order>> CancelarPedidoAsync(Guid id);
 }
 
-/// <summary>
-/// Implementação dos serviços de gerenciamento de vendas e pedidos
-/// </summary>
+// Implementação dos serviços de gerenciamento de vendas e pedidos
 public class VendasService : IVendasService
 {
     private readonly VendasDbContext _context;

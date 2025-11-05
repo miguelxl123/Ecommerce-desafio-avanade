@@ -5,9 +5,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Ecommerce.Estoque.Controllers;
 
-/// <summary>
-/// Controller responsável por gerenciar produtos e estoque
-/// </summary>
 [ApiController]
 [Route("api/[controller]")]
 [Produces("application/json")]
@@ -22,13 +19,6 @@ public class ProductsController : ControllerBase
         _logger = logger;
     }
 
-    /// <summary>
-    /// Listar produtos disponíveis no catálogo
-    /// </summary>
-    /// <param name="categoria">Filtrar produtos por categoria específica</param>
-    /// <param name="apenasAtivos">Mostrar apenas produtos ativos (true por padrão)</param>
-    /// <returns>Lista de produtos com informações de estoque</returns>
-    /// <response code="200">Lista de produtos retornada com sucesso</response>
     [HttpGet]
     [ProducesResponseType(typeof(ApiResponse<IEnumerable<Product>>), 200)]
     public async Task<IActionResult> ListarProdutos([FromQuery] string? categoria = null, [FromQuery] bool apenasAtivos = true)
@@ -45,13 +35,6 @@ public class ProductsController : ControllerBase
         }
     }
 
-    /// <summary>
-    /// Obter produto específico por ID
-    /// </summary>
-    /// <param name="id">Identificador único do produto</param>
-    /// <returns>Detalhes completos do produto incluindo estoque atual</returns>
-    /// <response code="200">Produto encontrado com sucesso</response>
-    /// <response code="404">Produto não encontrado</response>
     [HttpGet("{id:guid}")]
     [ProducesResponseType(typeof(ApiResponse<Product>), 200)]
     [ProducesResponseType(typeof(ApiResponse<object>), 404)]
@@ -75,11 +58,6 @@ public class ProductsController : ControllerBase
         }
     }
 
-    /// <summary>
-    /// Criar novo produto (requer autenticação)
-    /// </summary>
-    /// <param name="request">Dados do produto</param>
-    /// <returns>Produto criado</returns>
     [HttpPost]
     [Authorize]
     [ProducesResponseType(typeof(ApiResponse<Product>), 201)]
@@ -115,12 +93,6 @@ public class ProductsController : ControllerBase
         }
     }
 
-    /// <summary>
-    /// Atualizar produto (requer autenticação)
-    /// </summary>
-    /// <param name="id">ID do produto</param>
-    /// <param name="request">Dados para atualização</param>
-    /// <returns>Produto atualizado</returns>
     [HttpPut("{id:guid}")]
     [Authorize]
     [ProducesResponseType(typeof(ApiResponse<Product>), 200)]
@@ -160,11 +132,6 @@ public class ProductsController : ControllerBase
         }
     }
 
-    /// <summary>
-    /// Deletar produto (requer autenticação de admin)
-    /// </summary>
-    /// <param name="id">ID do produto</param>
-    /// <returns>Confirmação de deleção</returns>
     [HttpDelete("{id:guid}")]
     [Authorize(Roles = "Admin")]
     [ProducesResponseType(typeof(ApiResponse<bool>), 200)]
@@ -191,11 +158,6 @@ public class ProductsController : ControllerBase
         }
     }
 
-    /// <summary>
-    /// Verificar disponibilidade de produto
-    /// </summary>
-    /// <param name="request">Dados para verificação de disponibilidade</param>
-    /// <returns>Informações de disponibilidade</returns>
     [HttpPost("availability")]
     [ProducesResponseType(typeof(ApiResponse<ProductAvailabilityResponse>), 200)]
     [ProducesResponseType(typeof(ApiResponse<object>), 400)]
@@ -223,12 +185,6 @@ public class ProductsController : ControllerBase
         }
     }
 
-    /// <summary>
-    /// Adicionar estoque (requer autenticação)
-    /// </summary>
-    /// <param name="id">ID do produto</param>
-    /// <param name="request">Quantidade a ser adicionada</param>
-    /// <returns>Produto com estoque atualizado</returns>
     [HttpPost("{id:guid}/add-stock")]
     [Authorize]
     [ProducesResponseType(typeof(ApiResponse<Product>), 200)]

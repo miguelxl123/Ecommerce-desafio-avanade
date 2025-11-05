@@ -20,9 +20,7 @@ public class AuthController : ControllerBase
         _logger = logger;
     }
 
-    /// Realizar login no sistema
-    /// <param name="request">Dados de login</param>
-    /// <returns>Token JWT e informações do usuário</returns>
+    // Realizar login no sistema
     [HttpPost("login")]
     [ProducesResponseType(typeof(ApiResponse<LoginResponse>), 200)]
     [ProducesResponseType(typeof(ApiResponse<object>), 400)]
@@ -57,11 +55,7 @@ public class AuthController : ControllerBase
         }
     }
 
-    /// <summary>
-    /// Registrar novo usuário
-    /// </summary>
-    /// <param name="request">Dados de registro</param>
-    /// <returns>Token JWT e informações do usuário</returns>
+    // Registrar novo usuário
     [HttpPost("register")]
     [ProducesResponseType(typeof(ApiResponse<LoginResponse>), 200)]
     [ProducesResponseType(typeof(ApiResponse<object>), 400)]
@@ -96,10 +90,7 @@ public class AuthController : ControllerBase
         }
     }
 
-    /// <summary>
-    /// Validar token JWT
-    /// </summary>
-    /// <returns>Informações do usuário autenticado</returns>
+    // Validar token JWT
     [HttpGet("validate")]
     [Authorize]
     [ProducesResponseType(typeof(ApiResponse<object>), 200)]
@@ -130,10 +121,7 @@ public class AuthController : ControllerBase
         }
     }
 
-    /// <summary>
-    /// Realizar logout (invalidar token)
-    /// </summary>
-    /// <returns>Confirmação de logout</returns>
+    // Realizar logout (invalidar token)
     [HttpPost("logout")]
     [Authorize]
     [ProducesResponseType(typeof(ApiResponse<object>), 200)]

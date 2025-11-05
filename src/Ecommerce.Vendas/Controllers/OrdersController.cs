@@ -6,9 +6,7 @@ using System.Security.Claims;
 
 namespace Ecommerce.Vendas.Controllers;
 
-/// <summary>
-/// Controller responsável por gerenciar pedidos de venda
-/// </summary>
+// Controller responsável por gerenciar pedidos de venda
 [ApiController]
 [Route("api/[controller]")]
 [Authorize]
@@ -24,14 +22,7 @@ public class OrdersController : ControllerBase
         _logger = logger;
     }
     
-    /// <summary>
-    /// Criar um novo pedido de venda
-    /// </summary>
-    /// <param name="request">Dados do pedido a ser criado</param>
-    /// <returns>Pedido criado com sucesso</returns>
-    /// <response code="200">Pedido criado com sucesso</response>
-    /// <response code="400">Dados inválidos ou estoque insuficiente</response>
-    /// <response code="401">Usuário não autenticado</response>
+    // Criar um novo pedido de venda
     [HttpPost]
     [ProducesResponseType(typeof(ApiResponse<Order>), 200)]
     [ProducesResponseType(typeof(ApiResponse<object>), 400)]
@@ -74,10 +65,7 @@ public class OrdersController : ControllerBase
         }
     }
 
-    /// <summary>
-    /// Listar pedidos do usuário autenticado
-    /// </summary>
-    /// <returns>Lista de pedidos</returns>
+    // Listar pedidos do usuário autenticado
     [HttpGet]
     [ProducesResponseType(typeof(ApiResponse<IEnumerable<Order>>), 200)]
     [ProducesResponseType(typeof(ApiResponse<object>), 401)]
@@ -102,11 +90,6 @@ public class OrdersController : ControllerBase
         }
     }
 
-    /// <summary>
-    /// Obter pedido por ID
-    /// </summary>
-    /// <param name="id">ID do pedido</param>
-    /// <returns>Detalhes do pedido</returns>
     [HttpGet("{id:guid}")]
     [ProducesResponseType(typeof(ApiResponse<Order>), 200)]
     [ProducesResponseType(typeof(ApiResponse<object>), 404)]
@@ -140,11 +123,6 @@ public class OrdersController : ControllerBase
         }
     }
 
-    /// <summary>
-    /// Confirmar um pedido
-    /// </summary>
-    /// <param name="id">ID do pedido</param>
-    /// <returns>Pedido confirmado</returns>
     [HttpPost("{id:guid}/confirm")]
     [ProducesResponseType(typeof(ApiResponse<Order>), 200)]
     [ProducesResponseType(typeof(ApiResponse<object>), 400)]
@@ -184,11 +162,6 @@ public class OrdersController : ControllerBase
         }
     }
 
-    /// <summary>
-    /// Cancelar um pedido
-    /// </summary>
-    /// <param name="id">ID do pedido</param>
-    /// <returns>Pedido cancelado</returns>
     [HttpPost("{id:guid}/cancel")]
     [ProducesResponseType(typeof(ApiResponse<Order>), 200)]
     [ProducesResponseType(typeof(ApiResponse<object>), 400)]
@@ -228,10 +201,6 @@ public class OrdersController : ControllerBase
         }
     }
 
-    /// <summary>
-    /// Listar todos os pedidos (apenas para administradores)
-    /// </summary>
-    /// <returns>Lista de todos os pedidos</returns>
     [HttpGet("all")]
     [Authorize(Roles = "Admin")]
     [ProducesResponseType(typeof(ApiResponse<IEnumerable<Order>>), 200)]

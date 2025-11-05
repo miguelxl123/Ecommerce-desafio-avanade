@@ -7,30 +7,15 @@ using System.Text.Json;
 
 namespace Ecommerce.Shared.Services;
 
-/// <summary>
-/// Interface para serviços de mensageria com RabbitMQ
-/// </summary>
 public interface IRabbitMQService
 {
-    /// <summary>
-    /// Publicar mensagem em uma exchange/rota específica
-    /// </summary>
     Task PublishAsync<T>(string exchange, string routingKey, T message);
     
-    /// <summary>
-    /// Subscrever a uma fila para receber mensagens
-    /// </summary>
     Task SubscribeAsync<T>(string queue, Func<T, Task> handler);
     
-    /// <summary>
-    /// Liberar recursos da conexão
-    /// </summary>
     void Dispose();
 }
 
-/// <summary>
-/// Implementação do serviço de mensageria RabbitMQ para comunicação entre microserviços
-/// </summary>
 public class RabbitMQService : IRabbitMQService, IDisposable
 {
     private readonly IConnection _connection;

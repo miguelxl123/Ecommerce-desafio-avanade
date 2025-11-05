@@ -4,7 +4,7 @@ Projeto para desenvolver uma aplicação com arquitetura de microserviços para 
 
 O sistema é composto por microserviços que se comunicam via um API Gateway e um broker de mensagens (RabbitMQ). A autenticação é baseada em JWT.
 
-[![Build Status](https://img.shields.io/badge/build-passing-brightgreen)](https://github.com/miguelxl123/ecommerce-desafio-avanade)
+[![Build Status](https://img.shields.io/badge/INÍCIO-INÍCIO-brightgreen)](https://github.com/miguelxl123/ecommerce-desafio-avanade)
 
 
 # Arquitetura

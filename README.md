@@ -55,16 +55,11 @@ docker-compose up -d
 
 ##  Documentação
 
-<<<<<<< HEAD
-- **Testes:** [![Tests](https://img.shields.io/badge/tests-integration-blue)](./MANUAL-TESTES.md)
-- **Setup:** `SETUP.md`
-- **Postman:** `postman-collection.json`
-=======
 - **Testes:** [![Tests](https://img.shields.io/badge/tests-red?&style=Plastic)](./MANUAL-TESTES.md)
 - **Setup:** [![Tests](https://img.shields.io/badge/SETUP-black?&style=Plastic)](./SETUP.md)
-- **Postman:**[![Tests](https://img.shields.io/badge/postman-orange?&style=Plastic)](./postman-collection.json)
+- **Postman:** [![Tests](https://img.shields.io/badge/postman-orange?&style=Plastic)](./postman-collection.json)
 
->>>>>>> d47def361728db565484d0a77d0f31870d7a730b
+
 
 ##  Fluxo de Teste
 
@@ -82,7 +77,7 @@ docker-compose up -d
 
 - [![YouTube](https://img.shields.io/badge/YouTube-%23FF0000.svg?style=for-the-badge&logo=YouTube&logoColor=white)](https://www.youtube.com/watch?v=jap8tXIAMi4&list=PLJ4k1IC8GhW1UtPi9nwwW9l4TwRLR9Nxg)
 - [![YouTube](https://img.shields.io/badge/YouTube-%23FF0000.svg?style=for-the-badge&logo=YouTube&logoColor=white)](https://www.youtube.com/watch?v=-NaKiyaIZpM&list=PLBIZ3dmiYIYnMaxogi0YTT7n9aZAoM7TY)
-.m,
+
 ## Sobre mim
 
 - Nome: José Miguel
